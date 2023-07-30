@@ -1,41 +1,21 @@
-import { Route, Routes ,Outlet } from "react-router-dom";
-import Home from "./pages/home/home";
-
-const Navigation = () => {
-  return (
-    <div>
-      <div>
-      <h1>i am the Navigation bar</h1>
-      </div>
-      <Outlet />
-    </div>
-  )
-}
-
-const Shop = () => {
-  return (
-    <div>
-      <h1>Elegant Wear</h1>
-    </div>
-  );
-
-}
+import { Route, Routes} from 'react-router-dom';
+import Navigation from './pages/navigation/navigation';
+import Shop from './pages/shop/shop';
+import Home from './pages/home/home';
 
 
 
- const App = () => {
+
+
+const App = () => {
   return (
     <Routes>
-
-      <Route path="/home" element={<Home />}>
+      <Route path="/" element={<Navigation />}>
+        <Route index element={<Home />} />
         <Route path="shop" element={<Shop />} />
-      
-
       </Route>
     </Routes>
   );
-}
-
-
+};
 
 export default App;
