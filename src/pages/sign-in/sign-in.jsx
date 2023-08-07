@@ -8,18 +8,18 @@ import {
 } from '../../utils/firebase/firebase';
 
 const SignIn = () => {
-  useEffect(async()  => {  
-    const response = await getRedirectResult(auth);
-    console.log(response);
-    },[]);
-
+  useEffect(() => {
+    async function handleRedirect() {
+      const response = await getRedirectResult(auth);
+      console.log(response);
+    }
+    handleRedirect();
+  }, []);
 
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
     const userDocRef = await createUserDocumentFromAuth(user);
   };
-
- 
 
   return (
     <div>
@@ -28,8 +28,6 @@ const SignIn = () => {
       <button onClick={signInWithGoogleRedirect}>Sign in with Google redirect</button>
     </div>
   );
-  
 };
-
 
 export default SignIn;
