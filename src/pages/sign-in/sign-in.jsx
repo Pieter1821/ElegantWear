@@ -8,13 +8,9 @@ import {
 } from '../../utils/firebase/firebase';
 
 const SignIn = () => {
-  useEffect(async()  => {
+  useEffect(async()  => {  
     const response = await getRedirectResult(auth);
-    
-    if (response) {
-      const userDocRef = await createUserDocumentFromAuth(response.user);
-    }
-    
+    console.log(response);
     },[]);
 
 
