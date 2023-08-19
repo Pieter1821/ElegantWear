@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import FormInput from '../form-input/form-input';
 
+import Button from '../button/button';
+
+
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase';
+import './sign-up-form.scss';
 
 const defaultFormFields = {
   displayName: '',
@@ -51,36 +55,31 @@ const SignUpForm = () => {
   };
 
   return (
-    <div>
-      <h1>Sign up with email and password</h1>
+    <div className="sign-up-container">
+      <h2>Don't have an account?</h2>
+      <span>Sign up with email and password</span>
 
       <form onSubmit={handleSubmit}>
+        <FormInput
+          label="Display Name"
+          type="text"
+          required
+          onChange={handleInputChange}
+          name="displayName"
+          value={displayName}
+        />
 
-        <FormInput 
-        label='Display Name'
-         type="text"
-         required
-         onChange={handleInputChange}
-        name="displayName"
-         value={displayName} />
+        <FormInput label="Email" type="email" required onChange={handleInputChange} name="email" value={email} />
 
-        <FormInput 
-        label="Email"    
-        type="email"
-        required 
-        onChange={handleInputChange} 
-        name="email" value={email} />
+        <FormInput
+          label="Password"
+          type="password"
+          required
+          onChange={handleInputChange}
+          name="password"
+          value={password}
+        />
 
-        
-        <FormInput 
-        label="Password"
-        type="password" 
-        required 
-        onChange={handleInputChange} 
-        name="password" 
-        value={password} />
-
-        
         <FormInput
           label="Confirm Password"
           type="confirmPassword"
@@ -90,7 +89,8 @@ const SignUpForm = () => {
           value={confirmPassword}
         />
 
-        <button type="submit">Sign up</button>
+        <Button type="submit">Sign up</Button>
+       
       </form>
     </div>
   );
