@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import FormInput from '../form-input/form-input';
 import Button from '../button/button';
+
+import { UserContext } from '../../contexts/user.context';
 
 import {
   signInWithGooglePopup,
@@ -19,7 +21,7 @@ const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
-  console.log(formFields);
+  const { setCurrentUser } = useContext(UserContext);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -29,8 +31,10 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailAndPassword(email, password);
-      console.log('response', response);
+      const { user } = await signInAuthUserWithEmailAndPassword(email, password);
+     
+      setCurrentUser(user);
+      
 
       resetFormFields();
     } catch (error) {
@@ -42,9 +46,7 @@ const SignInForm = () => {
           alert('no user associated with this email address');
           break;
         default:
-         console.log('user creation encountered an error', error);
-         
-      
+          console.log('user creation encountered an error', error);
       }
     }
   };
@@ -81,7 +83,7 @@ const SignInForm = () => {
 
         <div className="buttons-container">
           <Button type="submit">Sign in</Button>
-          <Button type='button' button_Type="google" onClick={signInWithGoogle}>
+          <Button type="button" button_Type="google" onClick={signInWithGoogle}>
             Google sign in
           </Button>
         </div>
