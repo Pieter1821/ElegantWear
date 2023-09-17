@@ -1,11 +1,11 @@
-import { useContext, Fragment, useState, useEffect } from 'react';
+import React, { useContext, Fragment, useState, useEffect } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { signOutUser } from '../../utils/firebase/firebase';
 import Clotheshangerlogo from '../../assets/clotheshangerlogo.svg';
 import './navigation.scss';
 
 import { UserContext } from '../../contexts/user.context';
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
@@ -23,10 +23,11 @@ const Navigation = () => {
 
     window.addEventListener('resize', handleResize);
 
+    // Cleanup function to remove the event listener
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, []); // The empty dependency array ensures this effect runs only once, on component mount
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -45,7 +46,7 @@ const Navigation = () => {
               className={`mobile-menu-icon ${mobileMenuOpen ? 'active' : ''}`}
               onClick={toggleMobileMenu}
             >
-              <FaBars />
+              {mobileMenuOpen ? <FaTimes /> : <FaBars />}
             </div>
           )}
 

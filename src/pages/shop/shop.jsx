@@ -1,7 +1,7 @@
 const Shop = () => {
     return (
       <div className="shop-container">
-        <h1>This is the shop page</h1>
+        <span>This is the shop page</span>
       </div>
     );
   };
