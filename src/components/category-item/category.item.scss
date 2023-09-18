@@ -67,10 +67,10 @@
   }
 
   @media (max-width: 768px) {
-    /* Styles for small devices */
-    min-width: 100%;
+    
+    min-width: 90%;
     height: 200px;
-    margin: 15px 0 15px; /* Add margin at the top */
+    margin: 15px 0 15px; 
 
     &.large {
       height: 300px;
