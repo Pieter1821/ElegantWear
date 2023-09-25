@@ -7,17 +7,19 @@ import CartDropdown from '../../components/cart-dropdown/cart-dropdown';
 import './navigation.scss';
 
 import { UserContext } from '../../contexts/user.context';
+import { CartContext } from '../../contexts/cart.context';
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
-  
+  const { isCartOpen } = useContext(CartContext);
+
   const signOutHandler = async () => {
     await signOutUser();
   };
 
   return (
     <Fragment>
-      <div className='navigation'>
+      <div className="navigation">
         <Link className="logo-container" to="/" key="home">
           <img src={Clotheshangerlogo} alt="Logo" className="logo" />
         </Link>
@@ -34,9 +36,9 @@ const Navigation = () => {
               SIGN IN
             </Link>
           )}
-          <CartIcon />
+          {<CartIcon />}
         </div>
-          <CartDropdown/>
+        {isCartOpen && <CartDropdown />}
       </div>
       <Outlet />
     </Fragment>
