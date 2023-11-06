@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import './cart-dropdown.scss';
+import {CartDropdown, CartItems, EmptyMessage} from  './cart-dropdown.styles.jsx';
 import CartItem from '../cart-item/cart-item';
 import Button from '../button/button';
 import { CartContext } from '../../contexts/cart.context';
@@ -15,7 +15,7 @@ const CartDropdown = () => {
   };
 
   return (
-    <div className="cart-dropdown-container">
+    <CartDropdown>
       <div className="cart-items">
         {cartItems.map((item) => (
           <CartItem key={item.id} cartItem={item} />
@@ -25,7 +25,7 @@ const CartDropdown = () => {
       <Button onClick={goToCheckoutHandler} button_Type="inverted">
         GO TO CHECKOUT
       </Button>
-    </div>
+    </CartDropdown>
   );
 };
 
