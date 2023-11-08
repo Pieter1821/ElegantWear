@@ -1,4 +1,5 @@
-import styled from "styled-components";
+
+
 
 export const CartDropdownContainer = styled.div`
 position: absolute;
@@ -26,7 +27,7 @@ max-height: 200px;
   
 
 
-  button {
+ /* button {
       margin-top: 20px;
       align-self: center;
       padding: 10px 20px;
@@ -36,4 +37,4 @@ max-height: 200px;
       border-radius: 5px;
       cursor: pointer;
   }
-
+*/

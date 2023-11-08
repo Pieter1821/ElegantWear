@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import {CartDropdown, CartItems, EmptyMessage} from  './cart-dropdown.styles.jsx';
+import { CartDropdown, CartItems, EmptyMessage } from './cart-dropdown.styles.jsx';
 import CartItem from '../cart-item/cart-item';
 import Button from '../button/button';
 import { CartContext } from '../../contexts/cart.context';
@@ -11,7 +11,7 @@ const CartDropdown = () => {
 
   const goToCheckoutHandler = () => {
     navigate('/checkout');
-      console.log('going to checkout');
+    console.log('going to checkout');
   };
 
   return (
