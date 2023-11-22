@@ -18,12 +18,6 @@ export const BaseButton = styled.button`
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s, color 0.3s, border 0.3s;
-`;
-
-export const InvertedButton = styled(BaseButton)`
-  background-color: white;
-  color: black;
-  border: 1px solid black;
 
   &:hover {
     background-color: white;
@@ -33,13 +27,23 @@ export const InvertedButton = styled(BaseButton)`
 `;
 
 export const GoogleSignInButton = styled(BaseButton)`
-  &.google-sign-in {
-    background-color: #4285f4;
-    color: white;
+  background-color: #4285f4;
+  color: white;
 
-    &:hover {
-      background-color: #357ae8;
-      border: none;
-    }
+  &:hover {
+    background-color: #357ae8;
+    border: none;
+  }
+`;
+
+export const InvertedButton = styled(BaseButton)`
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+
+  &:hover {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
   }
 `;
