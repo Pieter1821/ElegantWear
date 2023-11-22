@@ -5,7 +5,8 @@ export const BaseButton = styled.button`
   width: auto;
   height: 50px;
   letter-spacing: 0.5px;
-  padding: 0 35px;
+  line-height: 50px;
+  padding: 0 35px 0 35px;
   font-size: 15px;
   background-color: black;
   color: white;
@@ -16,8 +17,6 @@ export const BaseButton = styled.button`
   cursor: pointer;
   display: flex;
   justify-content: center;
-  align-items: center;
-  transition: background-color 0.3s, color 0.3s, border 0.3s;
 
   &:hover {
     background-color: white;
@@ -44,6 +43,6 @@ export const InvertedButton = styled(BaseButton)`
   &:hover {
     background-color: black;
     color: white;
-    border: 1px solid white;
+    border: none;
   }
 `;

@@ -5,6 +5,7 @@ import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '
 import './sign-up-form.scss';
 
 
+
 const defaultFormFields = {
   displayName: '',
   email: '',
