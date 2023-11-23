@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
 
+export const ShoppingIcon = styled.img`
+  width: 24px;
+  height: 24px;
+`;
 
 export const CartIconContainer = styled.div`
   width: 45px;
@@ -12,14 +16,9 @@ export const CartIconContainer = styled.div`
   cursor: pointer;
 `;
 
-export const ShoppingIcon = styled.img`
-  width: 24px;
-  height: 24px;
-`;
-
 export const ItemCountContainer = styled.div`
   position: absolute;
-  font-size: 10px;
+  font-size: 10px; 
   font-weight: bold;
   bottom: 12px;
 `;
