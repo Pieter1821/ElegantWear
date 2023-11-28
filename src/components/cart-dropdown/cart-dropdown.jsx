@@ -5,8 +5,10 @@ import CartItem from '../cart-item/cart-item';
 import Button from '../button/button';
 import { CartContext } from '../../contexts/cart.context';
 
+
 const CartDropdown = () => {
   const { cartItems } = useContext(CartContext);
+
   const navigate = useNavigate();
 
   const goToCheckoutHandler = () => {
