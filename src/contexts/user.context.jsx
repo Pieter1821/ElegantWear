@@ -1,6 +1,6 @@
 import { createContext,  useEffect, useReducer } from 'react';
 import { onAuthStateChangedListener, createUserDocumentFromAuth } from '../utils/firebase/firebase';
-// import { createAction } from '../utils/reducer/reducer.js';
+ import { createAction } from '../utils/reducer/reducer.js';
 
 export const UserContext = createContext({
   currentUser: null,
@@ -22,7 +22,7 @@ const userReducer = (state, action) => {
       return { ...state, currentUser: payload };
 
     default:
-      throw new Error(`Unhandled action type: ${type}`);
+      throw new Error(`Unhandled action type: ${type} in userReducer`);
   }
 };
 

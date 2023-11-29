@@ -17,12 +17,11 @@ const App = () => {
       if (user) {
         createUserDocumentFromAuth(user);
       }
+
       dispatch(setCurrentUser(user));
     });
 
-    return () => {
-      unsubscribe();
-    };
+    return unsubscribe;
   }, [dispatch]);
 
   return (
