@@ -23,6 +23,8 @@ const App = () => {
     return () => unsubscribe();
   }, [dispatch]); // Include dispatch in the dependency array
 
+  
+
   return (
     <Routes>
       <Route path="/" element={<Navigation />}>
