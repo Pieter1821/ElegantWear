@@ -4,13 +4,15 @@ import { signOutUser } from '../../utils/firebase/firebase';
 import Clotheshangerlogo from '../../assets/clotheshangerlogo.svg';
 import CartIcon from '../../components/cart-icon/cart-icon';
 import CartDropdown from '../../components/cart-dropdown/cart-dropdown';
-import { NavigationContainer,NavLinks,NavLink,LogoContainer } from './navigation.styles.jsx';
+import { NavigationContainer, NavLinks, NavLink, LogoContainer } from './navigation.styles.jsx';
 
 import { UserContext } from '../../contexts/user.context';
 import { CartContext } from '../../contexts/cart.context';
+import { useSelector } from 'react-redux';
+import { selectCurrentUser } from '../../store/user/user.selector.js';
 
 const Navigation = () => {
-  const { currentUser } = useContext(UserContext);
+  const currentUser = useSelector(selectCurrentUser);
   const { isCartOpen } = useContext(CartContext);
 
   const signOutHandler = async () => {
@@ -28,7 +30,7 @@ const Navigation = () => {
             SHOP
           </NavLink>
           {currentUser ? (
-            <NavLink as ='span' onClick={signOutHandler} key="signout">
+            <NavLink as="span" onClick={signOutHandler} key="signout">
               SIGN OUT
             </NavLink>
           ) : (
@@ -39,8 +41,7 @@ const Navigation = () => {
           {<CartIcon />}
         </NavLinks>
         {isCartOpen && <CartDropdown />}
-          
-          </NavigationContainer>
+      </NavigationContainer>
       <Outlet />
     </Fragment>
   );
