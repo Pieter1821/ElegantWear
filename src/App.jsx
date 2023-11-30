@@ -11,18 +11,17 @@ import { useDispatch } from 'react-redux';
 
 const App = () => {
   const dispatch = useDispatch();
-
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener((user) => {
       if (user) {
         createUserDocumentFromAuth(user);
       }
-
       dispatch(setCurrentUser(user));
     });
 
-    return unsubscribe;
-  }, [dispatch]);
+    // Cleanup function to unsubscribe when the component is unmounted
+    return () => unsubscribe();
+  }, [dispatch]); // Include dispatch in the dependency array
 
   return (
     <Routes>
