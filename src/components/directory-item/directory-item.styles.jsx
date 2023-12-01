@@ -8,6 +8,12 @@ export const BackgroundImage = styled.div`
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
 `;
 
+const StyledComponent = styled.div`
+  background-image: url(${props => props.imageUrl});
+
+`;
+
+
 export const Body = styled.div`
   height: 90px;
   padding: 0 25px;
@@ -57,8 +63,7 @@ export const DirectoryItemContainer = styled.div`
     cursor: pointer;
 
     ${BackgroundImage} {
-      transform: scale(1.1);
-      transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+      url(${props => props.imageUrl});
     }
 
     ${Body} {
