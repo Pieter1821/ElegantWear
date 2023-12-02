@@ -30,14 +30,3 @@ export const CartItems = styled.div`
   overflow-y: auto;
 `;
 
-/* button {
-      margin-top: 20px;
-      align-self: center;
-      padding: 10px 20px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-  }
-*/

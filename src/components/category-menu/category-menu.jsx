@@ -1,4 +1,4 @@
-import React from 'react';
+
 import DirectoryItem from '../directory-item/directory-item';
 import { CategoryMenuContainer } from './category-menu.styles';
 
