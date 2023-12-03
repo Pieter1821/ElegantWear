@@ -8,10 +8,7 @@ export const BackgroundImage = styled.div`
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
 `;
 
-const StyledComponent = styled.div`
-  background-image: url(${props => props.imageUrl});
 
-`;
 
 
 export const Body = styled.div`
