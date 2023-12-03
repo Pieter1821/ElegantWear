@@ -1,7 +1,7 @@
 import { useReducer } from 'react';
 import { createContext } from 'react';
 
- import { createAction } from '../utils/reducer/reducer';
+import { createAction } from '../utils/reducer/reducer';
 
 const addCartItem = (cartItems, productToAdd) => {
   //find if cartItems contains productToAdd
@@ -77,17 +77,16 @@ const cartReducer = (state, action) => {
 
 export const CartProvider = ({ children }) => {
   const [{ cartItems, isCartOpen, cartCount, cartTotal }, dispatch] = useReducer(cartReducer, INITIAL_STATE);
-
   const updateCartItemsReducer = (newCartItems) => {
-    const newCartCount = cartItems.reduce((total, cartItem) => total + cartItem.quantity, 0);
+    const newCartCount = newCartItems.reduce((total, cartItem) => total + cartItem.quantity, 0);
 
-    const newCartTotal = cartItems.reduce((total, cartItem) => total + cartItem.quantity * cartItem.price, 0);
+    const newCartTotal = newCartItems.reduce((total, cartItem) => total + cartItem.quantity * cartItem.price, 0);
 
     dispatch(
       createAction(CART_ACTION_TYPES.SET_CART_ITEMS, {
         cartItems: newCartItems,
         cartCount: newCartCount,
-        cartTotal: newCartTotal,
+        cartTotal: newCartItems.length === 0 ? 0 : newCartTotal,
       })
     );
   };
