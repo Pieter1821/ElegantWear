@@ -6,8 +6,8 @@ import { useSelector } from 'react-redux';
 import { selectCartItems } from '../../store/cart/cart.selector.js';
 
 export default function CartDropdown() {
-  const navigate = useNavigate();
   const cartItems = useSelector(selectCartItems);
+  const navigate = useNavigate();
   const goToCheckoutHandler = () => {
     navigate('/checkout');
 
