@@ -3,17 +3,23 @@ import { useSelector } from 'react-redux';
 import { selectCategoriesMap } from '../../store/categories/category.selector';
 import CategoryPreview from '../../components/category-preview/category-preview';
 import { useMemo } from 'react';
+import { Spinner } from '../../components/spinner/spinner';
+import { selectCategoriesIsLoading } from '../../store/categories/category.selector';
 
 const CategoriesPreview = () => {
   const categoriesMap = useSelector(selectCategoriesMap);
-  const memoizedCategoriesMap = useMemo(() => categoriesMap, [categoriesMap]);
+  const isLoading = useSelector(selectCategoriesIsLoading);
 
   return (
     <Fragment>
-      {Object.keys(memoizedCategoriesMap).map((title) => {
-        const products = memoizedCategoriesMap[title];
-        return <CategoryPreview key={title} title={title} products={products} />;
-      })}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        Object.keys(categoriesMap).map((title) => {
+          const products = categoriesMap[title];
+          return <CategoryPreview key={title} title={title} products={products} />;
+        })
+      )}
     </Fragment>
   );
 };
