@@ -11,8 +11,9 @@ import { useDispatch } from 'react-redux';
 
 const App = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
-    getCurrentUser()
+    getCurrentUser().then((user) => console.log(user));
   }, []);
 
   return (
