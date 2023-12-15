@@ -1,4 +1,4 @@
-
+import styled from 'styled-components';
 
 export const CheckoutItemContainer = styled.div`
   width: 100%;
@@ -19,8 +19,6 @@ export const ImageContainer = styled.div`
     height: 100%;
   }
 `;
-
-import styled from 'styled-components';
 
 export const BaseSpan = styled.span`
   width: 23%;
