@@ -25,6 +25,7 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 
 const googleProvider = new GoogleAuthProvider();
+
 googleProvider.setCustomParameters({
   prompt: 'select_account',
 });
@@ -32,15 +33,16 @@ googleProvider.setCustomParameters({
 export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider);
 export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googleProvider);
-export const db = getFirestore(firebaseApp);
 
-export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+export const db = getFirestore();
+
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd, field) => {
   const collectionRef = collection(db, collectionKey);
   const batch = writeBatch(db);
 
   objectsToAdd.forEach((object) => {
-    const newDocRef = doc(collectionRef, object.title.toLowerCase());
-    batch.set(newDocRef, object);
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+    batch.set(docRef, object);
   });
 
   await batch.commit();
@@ -55,7 +57,7 @@ export const getCategoriesAndDocuments = async () => {
   return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
 };
 
-export const createUserDocumentFromAuth = async (userAuth, additionalData = {}) => {
+export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
   if (!userAuth) return;
 
   const userDocRef = doc(db, 'users', userAuth.uid);
@@ -70,10 +72,10 @@ export const createUserDocumentFromAuth = async (userAuth, additionalData = {}) 
         displayName,
         email,
         createdAt,
-        ...additionalData,
+        ...additionalInformation,
       });
     } catch (error) {
-      console.log('error creating user', error.message);
+      console.log('error creating the user', error.message);
     }
     return userSnapshot;
   }
