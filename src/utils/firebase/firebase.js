@@ -77,8 +77,8 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
     } catch (error) {
       console.log('error creating the user', error.message);
     }
-    return userSnapshot;
   }
+  return userSnapshot;
 };
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
