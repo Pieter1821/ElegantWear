@@ -5,13 +5,25 @@ import { USER_ACTION_TYPES } from './user.types';
 import { signInSuccess, signInFailed } from './user.action';
 
 import { getCurrentUser, createUserDocumentFromAuth } from '../../utils/firebase/firebase';
-
 export function* getSnapshotFromUserAuth(userAuth, additionalDetails) {
   try {
     const userSnapshot = yield call(createUserDocumentFromAuth, userAuth, additionalDetails);
-    yield put(signInSuccess({id: userSnapshot.id, ...userSnapshot.data()}));
+
+    // Check if userSnapshot is defined 
+    if (userSnapshot) {
+      yield put(
+        signInSuccess({
+          id: userSnapshot.id,
+          ...userSnapshot.data(),
+        })
+      );
+    } else {
+      // Handle the case where userSnapshot is undefined
+      yield put(signInFailed({ message: 'User snapshot is undefined.' }));
+    }
   } catch (error) {
     yield put(signInFailed(error));
+    throw error;
   }
 }
 
