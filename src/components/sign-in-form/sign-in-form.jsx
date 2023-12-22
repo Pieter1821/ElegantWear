@@ -3,9 +3,9 @@ import { useState } from 'react';
 import FormInput from '../form-input/form-input';
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button';
 
-import { auth, signInAuthUserWithEmailAndPassword, signInWithGooglePopup } from '../../utils/firebase/firebase';
+import { signInWithGooglePopup } from '../../utils/firebase/firebase';
 import { SignInContainer, ButtonsContainer } from './sign-in-form.styles';
-import { googleSignInStart } from '../../store/user/user.action';
+import { googleSignInStart, emailSignInStart } from '../../store/user/user.action';
 
 const defaultFormFields = {
   email: '',
@@ -25,7 +25,7 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      const { user } = await signInAuthUserWithEmailAndPassword(email, password);
+      dispatch(emailSignInStart(email, password));
 
       resetFormFields();
     } catch (error) {
@@ -73,7 +73,7 @@ const SignInForm = () => {
 
         <ButtonsContainer>
           <Button type="submit">Sign in</Button>
-          <Button buttonType={BUTTON_TYPE_CLASSES.google} onClick={signInWithGoogle}>
+          <Button buttonType={BUTTON_TYPE_CLASSES.google} onClick={signInWithGooglePopup}>
             Google sign in
           </Button>
         </ButtonsContainer>
@@ -83,5 +83,3 @@ const SignInForm = () => {
 };
 
 export default SignInForm;
-
-// TODO CHECK signInWithGooglePopup
