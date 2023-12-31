@@ -12,54 +12,26 @@ export const PaymentForm = () => {
     e.preventDefault();
 
     if (!stripe || !elements) {
-      console.error('Stripe or Elements not initialized');
+      console.log('Stripe or Elements not available');
       return;
     }
 
-    try {
-      // Call  serverless function to create a payment intent
-      const response = await fetch('/.netlify/functions/create-payment-intent', {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ amount: 10000 }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to create payment intent');
-      }
-
-      const paymentIntent = await response.json();
-
-      // Confirm the payment on the client side
-      const result = await stripe.confirmCardPayment(paymentIntent.client_secret, {
-        payment_method: {
-          card: elements.getElement(CardElement),
-        },
-      });
-
-      if (result.error) {
-        console.error(result.error.message);
-        // Handle payment error
-      } else if (result.paymentIntent.status === 'succeeded') {
-        console.log('Payment succeeded');
-        // Handle payment success
-      }
-    } catch (error) {
-      console.error('Error:', error.message);
-      
-    }
+    const response = await fetch('/.netlify/functions/create-payment-intent', {
+      method: 'post',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({ amount: 10000 }),
+    }).then((res) => res.json());
+    console.log(response);
   };
 
   return (
     <PaymentFormContainer>
-      <FormContainer onSubmit={paymentHandler}>
+      <FormContainer onScroll={paymentHandler}>
         <h2>Credit Card Payment:</h2>
         <CardElement />
-        <Button buttonType={BUTTON_TYPE_CLASSES.inverted} type="submit">
-          Pay Now
-        </Button>
+        <Button buttonType={BUTTON_TYPE_CLASSES.inverted}>Pay Now</Button>
       </FormContainer>
     </PaymentFormContainer>
   );
