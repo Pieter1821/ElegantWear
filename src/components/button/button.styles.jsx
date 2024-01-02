@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import { SpinnerContainer } from '../spinner/spinner.styles';
 
 export const BaseButton = styled.button`
   min-width: 165px;
   width: auto;
   height: 50px;
   letter-spacing: 0.5px;
-  
+
   padding: 0 35px 0 35px;
   font-size: 15px;
   background-color: black;
@@ -17,7 +18,7 @@ export const BaseButton = styled.button`
   cursor: pointer;
   display: flex;
   justify-content: center;
-  align-items:center;
+  align-items: center;
 
   &:hover {
     background-color: white;
@@ -47,3 +48,10 @@ export const InvertedButton = styled(BaseButton)`
     border: none;
   }
 `;
+
+export const ButtonSpinner = styled(SpinnerContainer)`
+  width: 30px;
+  height: 30px;
+ 
+
+`
