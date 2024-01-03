@@ -5,8 +5,6 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectCartTotal } from '../../store/cart/cart.selector';
 import { selectCurrentUser } from '../../store/user/user.selector';
-import { useDispatch } from 'react-redux';
-import { clearItemFromCart } from '../../store/cart/cart.action';
 
 export const PaymentForm = () => {
   const stripe = useStripe();
@@ -14,13 +12,12 @@ export const PaymentForm = () => {
   const amount = useSelector(selectCartTotal);
   const currentUser = useSelector(selectCurrentUser);
   const [isPaymentProcessing, setIsPaymentProcessing] = useState(false);
-  
 
   const paymentHandler = async (e) => {
     e.preventDefault();
 
     try {
-      if (!stripe || !elements || isPaymentProcessing) {
+      if (!stripe || !elements) {
         return;
       }
 
@@ -55,7 +52,6 @@ export const PaymentForm = () => {
       } else {
         if (paymentResult.paymentIntent.status === 'succeeded') {
           alert('Payment Successful');
-          
         }
       }
     } catch (error) {
@@ -71,8 +67,10 @@ export const PaymentForm = () => {
       <FormContainer onSubmit={paymentHandler}>
         <h2>Credit Card Payment: </h2>
         <CardElement />
-        <PaymentButton buttonType={BUTTON_TYPE_CLASSES.inverted} disabled={isPaymentProcessing}>
-          {isPaymentProcessing ? 'Processing...' : 'Pay now'}
+        <PaymentButton 
+        buttonType={BUTTON_TYPE_CLASSES.inverted} 
+        isLoading={isPaymentProcessing}>
+          Pay Now
         </PaymentButton>
       </FormContainer>
     </PaymentFormContainer>
