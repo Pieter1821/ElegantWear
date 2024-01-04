@@ -33,6 +33,19 @@ export const ProductCartContainer = styled.div`
       display: flex;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    height: auto;
+
+    img {
+      height: 70%;
+    }
+
+    button {
+      top: auto;
+      margin-top: 10px;
+    }
+  }
 `;
 
 export const Footer = styled.div`
@@ -51,3 +64,4 @@ export const Name = styled.span`
 export const Price = styled.span`
   width: 10%;
 `;
+

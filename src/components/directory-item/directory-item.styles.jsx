@@ -8,9 +8,6 @@ export const BackgroundImage = styled.div`
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
 `;
 
-
-
-
 export const Body = styled.div`
   height: 90px;
   padding: 0 25px;
@@ -34,6 +31,19 @@ export const Body = styled.div`
   p {
     font-weight: lighter;
     font-size: 16px;
+  }
+
+  @media screen and (max-width: 768px) {
+    height: 70px;
+    padding: 0 15px;
+
+    h2 {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 14px;
+    }
   }
 `;
 
@@ -67,4 +77,15 @@ export const DirectoryItemContainer = styled.div`
       opacity: 0.9;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    height: 150px;
+
+    &:hover {
+      ${Body} {
+        opacity: 1;
+      }
+    }
+  }
 `;
+
