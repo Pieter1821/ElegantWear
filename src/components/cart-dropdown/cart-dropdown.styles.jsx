@@ -20,6 +20,12 @@ export const CartDropdownContainer = styled.div`
     margin-top: auto;
   }
 
+  @media (max-width: 500px) {
+    width: 90%;
+    top: 120px;
+    right: 0;
+  }
+
   @media screen and (min-width: 600px) {
     top: 50px;
     right: 50px;
@@ -31,7 +37,7 @@ export const CartDropdownContainer = styled.div`
 
   @media screen and (min-width: 250px) {
     top: 120px;
-    width:190px;
+    width: 190px;
     right: 50px;
   }
 `;
