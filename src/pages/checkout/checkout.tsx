@@ -1,4 +1,4 @@
-import { CheckoutContainer, CheckoutHeader, HeaderBlock, Total } from '../checkout/checkout.styles';
+import { CheckoutContainer, CheckoutHeader, HeaderBlock, Total } from './checkout.styles';
 import CheckoutItem from '../../components/checkout-item/checkout-item';
 import { useSelector } from 'react-redux';
 import { selectCartItems, selectCartTotal } from '../../store/cart/cart.selector';
