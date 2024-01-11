@@ -13,6 +13,7 @@ export type CategoryAction = FetchCategoriesStart | FetchCategoriesSuccess | Fet
 export const fetchCategoriesStart = (): FetchCategoriesStart =>
   createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START);
 
+
 export const fetchCategoriesSuccess = (categoriesArray: Category[]): FetchCategoriesSuccess =>
   createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS, categoriesArray);
 
