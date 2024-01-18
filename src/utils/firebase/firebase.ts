@@ -8,8 +8,11 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  User,
 } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs } from 'firebase/firestore';
+
+import { Category } from '../../store/categories/category.types';
 
 // Firebase configuration
 const firebaseConfig = {
@@ -35,7 +38,14 @@ export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googlePro
 
 export const db = getFirestore();
 
-export const addCollectionAndDocuments = async (collectionKey, objectsToAdd, field) => {
+export type ObjectToAdd = {
+  title: string;
+};
+
+export const addCollectionAndDocuments = async <T extends ObjectToAdd>(
+  collectionKey: string,
+  objectsToAdd: T[]
+): Promise<void> => {
   const collectionRef = collection(db, collectionKey);
   const batch = writeBatch(db);
 
@@ -48,15 +58,30 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd, fie
   console.log('done');
 };
 
-export const getCategoriesAndDocuments = async () => {
+export const getCategoriesAndDocuments = async (): Promise<Category[]> => {
   const collectionRef = collection(db, 'categories');
   const q = query(collectionRef);
 
   const querySnapshot = await getDocs(q);
-  return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
+  return querySnapshot.docs.map((docSnapshot) => docSnapshot.data() as Category);
 };
 
-export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
+export type additionalInformation = {
+  displayName?: string;
+}
+
+export type UserData = {
+  createdAt: Date;
+  displayName: string;
+  email: string;
+  lastSignedInAt: Date;
+  
+}
+
+export const createUserDocumentFromAuth = async (
+  userAuth: User, 
+  additionalInformation = {} as additionalInformation
+  ) => {
   if (!userAuth) return;
 
   const userDocRef = doc(db, 'users', userAuth.uid);
