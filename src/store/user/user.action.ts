@@ -1,26 +1,27 @@
-import { ActionWithPayload } from './../../utils/reducer/reducer';
-import { setCurrentUser } from './user.action';
 
 import { USER_ACTION_TYPES } from './user.types';
-import {createAction , Action , ActionWithPayload} from '../../utils/reducer/reducer'	
+import { Action,ActionWithPayload, createAction, withMatcher } from '../../utils/reducer/reducer';
+import { UserData } from '../../utils/firebase/firebase';
 
+export type CheckUserSession = Action<USER_ACTION_TYPES.CHECK_USER_SESSION>
 
-export const setCurrentUser = (user) => {
-  return createAction(USER_ACTION_TYPES.SET_CURRENT_USER, user);
-};
+export type SetCurrentUser = ActionWithPayload<USER_ACTION_TYPES.SET_CURRENT_USER, UserData>
 
-export const checkUserSession = () => {
-  return createAction(USER_ACTION_TYPES.CHECK_USER_SESSION);
-};
+export type GoogleSignInStart = Action<USER_ACTION_TYPES.GOOGLE_SIGN_IN_START>
 
-export const googleSignInStart = () => {
-  return createAction(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START);
-};
+export type EmailSignInStart = ActionWithPayload<USER_ACTION_TYPES.EMAIL_SIGN_IN_START, { email: string, Password: string }>;
 
-export const emailSignInStart = (email, Password) => {
-  return createAction(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, { email, Password });
-};
+export const emailSignInStart = (email: string,Password: string):EmailSignInStart => createAction(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, { email, Password });
 
+export const googleSignInStart = ():GoogleSignInStart => createAction(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START);
+
+export const setCurrentUser = (UserData:UserData):SetCurrentUser => 
+ createAction(USER_ACTION_TYPES.SET_CURRENT_USER , UserData);
+
+export const checkUserSession = ():CheckUserSession => 
+  createAction(USER_ACTION_TYPES.CHECK_USER_SESSION);
+
+// TODO the rest 
 export const signInSuccess = (user) => {
   return createAction(USER_ACTION_TYPES.SIGN_IN_SUCCESS, user);
 };
