@@ -9,10 +9,14 @@ export type SetCurrentUser = ActionWithPayload<USER_ACTION_TYPES.SET_CURRENT_USE
 
 export type GoogleSignInStart = Action<USER_ACTION_TYPES.GOOGLE_SIGN_IN_START>
 
+export type SignInSuccess = ActionWithPayload<USER_ACTION_TYPES.SIGN_IN_SUCCESS, UserData>
+
+export const signInSuccess = (user) createAction(USER_ACTION_TYPES.SIGN_IN_SUCCESS, user);
+};
 export type EmailSignInStart = ActionWithPayload<USER_ACTION_TYPES.EMAIL_SIGN_IN_START, { email: string, Password: string }>;
 
 export const emailSignInStart = (email: string,Password: string):EmailSignInStart => createAction(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, { email, Password });
-
+SignInSuccessSignInSuccess
 export const googleSignInStart = ():GoogleSignInStart => createAction(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START);
 
 export const setCurrentUser = (UserData:UserData):SetCurrentUser => 
@@ -22,9 +26,6 @@ export const checkUserSession = ():CheckUserSession =>
   createAction(USER_ACTION_TYPES.CHECK_USER_SESSION);
 
 // TODO the rest 
-export const signInSuccess = (user) => {
-  return createAction(USER_ACTION_TYPES.SIGN_IN_SUCCESS, user);
-};
 
 export const signInFailed = (error) => {
   return createAction(USER_ACTION_TYPES.SIGN_IN_FAILED, error);
