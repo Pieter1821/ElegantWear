@@ -1,7 +1,7 @@
 import { signInFailed, signUpFailed, signOutFailed, signOutSuccess, signInSuccess } from './user.action';
 import { AnyAction } from 'redux';
 
-import { UserData } from './user.types';
+import { UserData } from '../../utils/firebase/firebase';
 
 
 
