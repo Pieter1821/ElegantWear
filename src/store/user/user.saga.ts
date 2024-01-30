@@ -1,3 +1,4 @@
+import { UserData } from './../../utils/firebase/firebase';
 import { takeLatest, all, put, call } from 'typed-redux-saga/macro';
 
 import { User } from 'firebase/auth';
@@ -99,7 +100,7 @@ export function* signOut() {
   }
 }
 
-export function* signInAfterSignUp({ payload: { user, additionalDetails } }:SignUpSuccess) {
+export function* signInAfterSignUp({ payload: { user, additionalDetails } }: SignUpSuccess) {
   yield* call(getSnapshotFromUserAuth, user, additionalDetails);
 }
 
