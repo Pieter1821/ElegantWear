@@ -14,6 +14,7 @@ import {
   emailSignInStart,
   EmailSignInStart,
   SignUpStart,
+  SignUpSuccess,
 } from './user.action';
 
 import {
@@ -98,7 +99,7 @@ export function* signOut() {
   }
 }
 
-export function* signInAfterSignUp({ payload: { user, additionalDetails } }) {
+export function* signInAfterSignUp({ payload: { user, additionalDetails } }:SignUpSuccess) {
   yield* call(getSnapshotFromUserAuth, user, additionalDetails);
 }
 
