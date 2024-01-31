@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useState, FormEvent, ChangeEvent } from 'react';
 import FormInput from '../form-input/form-input';
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button';
 
@@ -21,14 +21,14 @@ const SignInForm = () => {
     setFormFields(defaultFormFields);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
       dispatch(emailSignInStart(email, password));
       resetFormFields();
     } catch (error) {
-      switch (error.code) {
+      switch (error) {
         case 'auth/wrong-password':
           alert('Incorrect password for email ');
           break;
@@ -45,7 +45,7 @@ const SignInForm = () => {
     dispatch(googleSignInStart());
   };
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormFields({
       ...formFields,
@@ -59,6 +59,7 @@ const SignInForm = () => {
       <span>Sign in with email and password</span>
 
       <form onSubmit={handleSubmit}>
+
         <FormInput label="Email" type="email" required onChange={handleInputChange} name="email" value={email} />
 
         <FormInput
