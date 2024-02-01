@@ -1,10 +1,14 @@
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { StripeCardElement } from '@stripe/stripe-js';
 import { BUTTON_TYPE_CLASSES } from '../button/button';
 import { PaymentFormContainer, FormContainer, PaymentButton } from './payment-form.styles';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectCartTotal } from '../../store/cart/cart.selector';
 import { selectCurrentUser } from '../../store/user/user.selector';
+import { FormEvent } from 'react';
+
+const ifValidCardElement = (card: StripeCardElement | null): card is StripeCardElement => card !== null;
 
 export const PaymentForm = () => {
   const stripe = useStripe();
@@ -13,7 +17,7 @@ export const PaymentForm = () => {
   const currentUser = useSelector(selectCurrentUser);
   const [isPaymentProcessing, setIsPaymentProcessing] = useState(false);
 
-  const paymentHandler = async (e) => {
+  const paymentHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
@@ -38,14 +42,23 @@ export const PaymentForm = () => {
       const data = await response.json();
       const { client_secret } = data.paymentIntent;
 
+      const cardDetails = elements.getElement(CardElement);
+
+      if (!ifValidCardElement(cardDetails)) return;
+
+
+
+
       const paymentResult = await stripe.confirmCardPayment(client_secret, {
         payment_method: {
-          card: elements.getElement(CardElement),
+          card: cardDetails,
           billing_details: {
-            name: currentUser ? currentUser.displayName : 'Guest',
+            // Convert null to undefined or a default string value
+            name: currentUser && currentUser.displayName !== null ? currentUser.displayName : 'Guest',
           },
         },
       });
+
 
       if (paymentResult.error) {
         alert(paymentResult.error.message);
@@ -67,11 +80,13 @@ export const PaymentForm = () => {
       <FormContainer onSubmit={paymentHandler}>
         <h2>Credit Card Payment: </h2>
         <CardElement />
-        <PaymentButton 
-        buttonType={BUTTON_TYPE_CLASSES.inverted} 
-        isLoading={isPaymentProcessing}>
+        <PaymentButton
+          buttonType={BUTTON_TYPE_CLASSES.inverted}
+          isLoading={isPaymentProcessing}
+          disabled={isPaymentProcessing}> {/* Disable button during processing */}
           Pay Now
         </PaymentButton>
+
       </FormContainer>
     </PaymentFormContainer>
   );

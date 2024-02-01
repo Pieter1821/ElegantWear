@@ -1,6 +1,21 @@
 import {CategoryPreviewContainer,Title,Preview} from './category-preview.styles';
 import ProductCard from '../product-card/product-card';
 
+export type Product = {
+    id: string;
+    name: string;
+    price: number;
+    imageUrl: string;
+  
+} 
+
+export type CategoryPreviewProps = {
+    title: string;
+    products: ;
+
+    // TODO typing category-preview
+}
+
 const CategoryPreview = ({ title, products }) => {
   return (
     <CategoryPreviewContainer>

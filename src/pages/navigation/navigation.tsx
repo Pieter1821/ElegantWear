@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom'; // Use Link for navigation
 import Clotheshangerlogo from '../../assets/clotheshangerlogo.svg';
 import CartIcon from '../../components/cart-icon/cart-icon';
 import CartDropdown from '../../components/cart-dropdown/cart-dropdown';
@@ -26,14 +26,16 @@ const Navigation = () => {
           <NavLink to="/shop" key="shop">
             SHOP
           </NavLink>
+
           {currentUser ? (
-            <NavLink as='span' onClick={signOutUser}>
+          
+            <span onClick={signOutUser} style={{ cursor: 'pointer' }}>
               SIGN OUT
-            </NavLink>
+            </span>
           ) : (
-            <NavLink to='/auth'>SIGN IN</NavLink>
+            <Link to='/auth' style={{ textDecoration: 'none', color: 'inherit' }}>SIGN IN</Link>
           )}
-          {<CartIcon />}
+          <CartIcon />
         </NavLinks>
         {isCartOpen && <CartDropdown />}
       </NavigationContainer>
