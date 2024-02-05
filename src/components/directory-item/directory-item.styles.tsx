@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const BackgroundImage = styled.div`
+export type BackgroundImageProps = {
+  imageUrl: string;
+};
+
+export const BackgroundImage = styled.div<BackgroundImageProps>`
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -68,11 +72,6 @@ export const DirectoryItemContainer = styled.div`
 
   &:hover {
     cursor: pointer;
-
-    ${BackgroundImage} {
-      url(${props => props.imageUrl});
-    }
-
     ${Body} {
       opacity: 0.9;
     }
@@ -80,7 +79,6 @@ export const DirectoryItemContainer = styled.div`
 
   @media screen and (max-width: 768px) {
     height: 150px;
-
     &:hover {
       ${Body} {
         opacity: 1;
@@ -88,4 +86,3 @@ export const DirectoryItemContainer = styled.div`
     }
   }
 `;
-
