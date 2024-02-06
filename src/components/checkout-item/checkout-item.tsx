@@ -50,3 +50,6 @@ const CheckoutItem: FC<CheckoutItemProps> = ({ cartItem }) => {
     </CheckoutItemContainer>
   );
 };
+
+
+export default CheckoutItem;

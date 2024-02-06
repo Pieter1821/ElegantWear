@@ -4,7 +4,7 @@ import { FC } from 'react';
 
 
 export type Product = {
-  id: string;
+  id: number;
   name: string;
   price: number;
   imageUrl: string;
