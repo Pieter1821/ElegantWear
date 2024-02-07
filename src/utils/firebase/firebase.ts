@@ -81,6 +81,7 @@ export type AdditionalInformation = {
   displayName?: string;
 };
 export type UserData = {
+  createdAt: Date
   displayName: string | null;
   email: string | null;
 };

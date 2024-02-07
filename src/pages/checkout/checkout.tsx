@@ -1,3 +1,4 @@
+import React from 'react';
 import { CheckoutContainer, CheckoutHeader, HeaderBlock, Total } from './checkout.styles';
 import CheckoutItem from '../../components/checkout-item/checkout-item';
 import { useSelector } from 'react-redux';

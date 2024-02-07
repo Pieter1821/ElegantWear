@@ -2,11 +2,13 @@ import { DirectoryItemContainer, Body, BackgroundImage } from './directory-item.
 import { useNavigate } from 'react-router-dom';
 import { Category } from '../../store/categories/category.types';
 import { FC } from 'react';
+import { CategoryMenu } from '../category-menu/category-menu';
+import React from 'react';
 
 
 
 type DirectoryItemProps = {
-  category: Category;
+  category: CategoryMenu;
 }
 
 

@@ -1,15 +1,9 @@
 import { CartItemContainer, ItemDetails } from './cart-item.styles';
 
-export type CartItemType = {
-  name: string,
-  imageUrl: string,
-  price: number,
-  quantity: number,
-
-}
+import { CartItem as TCartItem} from '../../store/cart/cart.types';
 
 export type CartItemProps = {
-  cartItem: CartItemType;
+  cartItem: TCartItem;
 }
 
 const CartItem = ({ cartItem }: CartItemProps) => {

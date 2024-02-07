@@ -1,22 +1,22 @@
+import shoppingBagIcon from '../../assets/shoppingbag.svg';
 import { selectIsCartOpen, selectCartCount } from '../../store/cart/cart.selector';
 import { setIsCartOpen } from '../../store/cart/cart.action';
-
 import { useDispatch, useSelector } from 'react-redux';
-import { ReactComponent as ShoppingIcon } from '../../assets/shoppingbag.svg';
-import { CartIconContainer, ItemCount, } from './cart-icon.styles';
+
+import { CartIconContainer, ItemCount } from './cart-icon.styles';
 
 const CartIcon = () => {
   const dispatch = useDispatch();
   const cartCount = useSelector(selectCartCount);
-  const IsCartOpen = useSelector(selectIsCartOpen);
+  const isCartOpen = useSelector(selectIsCartOpen);
 
   const toggleIsCartOpen = () => {
-    dispatch(setIsCartOpen(!IsCartOpen));
+    dispatch(setIsCartOpen(!isCartOpen));
   };
 
   return (
-    <CartIconContainer onClick={toggleIsCartOpen}>
-      <ShoppingIcon className="shopping-icon" /> alt="shopping bag icon" /
+    <CartIconContainer onClick={toggleIsCartOpen} aria-label="Toggle cart">
+       <img src={shoppingBagIcon} className="shopping-icon" alt="Shopping Bag" />
       <ItemCount>{cartCount}</ItemCount>
     </CartIconContainer>
   );

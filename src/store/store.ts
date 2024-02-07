@@ -24,9 +24,10 @@ const persistConfig: ExtendedPersistConfig = {
   whitelist: ['cart'],
 };
 
+const sagaMiddleware = createSagaMiddleware();
+
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const sagaMiddleware = createSagaMiddleware();
 
 const middlewares: Middleware[] = [sagaMiddleware];
 if (process.env.NODE_ENV !== 'production') {
@@ -41,3 +42,5 @@ const storeEnhancers = composeEnhancer(applyMiddleware(...middlewares));
 export const store = createStore(persistedReducer, undefined, storeEnhancers);
 
 sagaMiddleware.run(rootSaga);
+
+export const persistor = persistStore(store);

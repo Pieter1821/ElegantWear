@@ -8,10 +8,9 @@ import { selectCartItems } from '../../store/cart/cart.selector';
 export default function CartDropdown() {
   const cartItems = useSelector(selectCartItems);
   const navigate = useNavigate();
+
   const goToCheckoutHandler = () => {
     navigate('/checkout');
-
-    console.log('going to checkout');
   };
 
   return (
