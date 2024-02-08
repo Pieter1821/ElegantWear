@@ -1,5 +1,5 @@
 import { UserData } from './../../utils/firebase/firebase';
-import { takeLatest, all, put, call } from 'typed-redux-saga/macro';
+import { takeLatest, all, put, call } from 'typed-redux-saga';
 
 import { User } from 'firebase/auth';
 
