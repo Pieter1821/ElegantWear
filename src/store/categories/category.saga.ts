@@ -1,4 +1,3 @@
-// Importing directly from 'typed-redux-saga'
 import { takeLatest, call, put, all } from 'typed-redux-saga';
 
 import { getCategoriesAndDocuments } from '../../utils/firebase/firebase';
