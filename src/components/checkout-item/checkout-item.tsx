@@ -54,4 +54,4 @@ const CheckoutItem: FC<CheckoutItemProps> = memo(({ cartItem }) => {
 
 export default CheckoutItem;
 
-// TODO we must test our code for optimisations before and after adding memo
+
