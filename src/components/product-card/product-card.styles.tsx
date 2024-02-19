@@ -29,24 +29,12 @@ export const ProductCartContainer = styled.div`
     }
 
     button {
-      opacity: 0.85;
+      opacity: 0.9;
       display: flex;
     }
   }
-
-  @media screen and (max-width: 768px) {
-    height: auto;
-
-    img {
-      height: 70%;
     }
-
-    button {
-      top: auto;
-      margin-top: 10px;
-    }
-  }
-`;
+ `;
 
 export const Footer = styled.div`
   width: 100%;
