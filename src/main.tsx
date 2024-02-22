@@ -9,20 +9,6 @@ import { store, persistor } from './store/store.js';
 import { stripePromise } from './utils/stripe.js';
 import './index.scss';
 
-import { registerSW } from 'virtual:pwa-register'
-
-
-
-// Register the service worker
-const updateSW = registerSW({
-  onNeedRefresh() {},
-  onOfflineReady() {}
-
-})
-
-
-
-
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
