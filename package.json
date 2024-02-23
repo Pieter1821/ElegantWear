@@ -29,7 +29,19 @@
     "reselect": "^4.1.8",
     "stripe": "^14.10.0",
     "styled-components": "^6.1.0",
-    "typed-redux-saga": "^1.5.0"
+    "typed-redux-saga": "^1.5.0",
+    "workbox-background-sync": "^6.5.3",
+    "workbox-broadcast-update": "^6.5.3",
+    "workbox-cacheable-response": "^6.5.3",
+    "workbox-core": "^6.5.3",
+    "workbox-expiration": "^6.5.3",
+    "workbox-google-analytics": "^6.5.3",
+    "workbox-navigation-preload": "^6.5.3",
+    "workbox-precaching": "^6.5.3",
+    "workbox-range-requests": "^6.5.3",
+    "workbox-routing": "^6.5.3",
+    "workbox-strategies": "^6.5.3",
+    "workbox-streams": "^6.5.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.47",

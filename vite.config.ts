@@ -9,7 +9,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'robots.txt'],
       manifest: {
-        name: 'Elegant Wear',
+        name: 'PWA-Elegant Wear',
         short_name: 'Elegant',
         description: 'Elegant Wear',
         theme_color: '#0099ff',
@@ -18,17 +18,20 @@ export default defineConfig({
             src: '/crwn-192x192.png',
             sizes: '192x192',
             type: 'image/png',
+            "purpose": "maskable"
           },
           {
             src: '/crwn-512x512.png',
             sizes: '512x512',
             type: 'image/png',
+            "purpose": "maskable"
           },
         ],
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg}'], 
       },
+
     }),
   ],
 });
