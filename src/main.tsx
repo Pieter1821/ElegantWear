@@ -1,4 +1,4 @@
-import { registerSW } from "virtual:pwa-register";
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
@@ -8,6 +8,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import App from './App.js';
 import { store, persistor } from './store/store.js';
 import { stripePromise } from './utils/stripe.js';
+
 
 
 
@@ -26,9 +27,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   </React.StrictMode>
 );
 
-registerSW(
-  {immediate : true}
-)
+
 
 
 
