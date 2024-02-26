@@ -1,7 +1,7 @@
 import { CategoryPreviewContainer, Title, Preview } from './category-preview.styles';
 import ProductCard from '../product-card/product-card';
 import { FC } from 'react';
-import React from 'react';
+
 
 import { CategoryItem } from '../../store/categories/category.types';
 

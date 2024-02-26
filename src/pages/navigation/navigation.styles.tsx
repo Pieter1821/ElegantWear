@@ -31,7 +31,6 @@ export const LogoContainer = styled(Link)`
 
 export const NavLinks = styled.div`
   display: flex;
-  flex-direction: column;
   gap: 1rem;
   align-items: center; 
 
