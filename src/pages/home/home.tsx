@@ -7,7 +7,7 @@ import CategoryMenu from '../../components/category-menu/category-menu';
 
 
 
-const Home =  () => {
+const Home = () => {
   return (
     <div>
       <Outlet />

@@ -36,24 +36,11 @@ export const Body = styled.div`
     font-weight: lighter;
     font-size: 16px;
   }
-
-  @media screen and (max-width: 768px) {
-    height: 70px;
-    padding: 0 15px;
-
-    h2 {
-      font-size: 18px;
-    }
-
-    p {
-      font-size: 14px;
-    }
-  }
 `;
 
 export const DirectoryItemContainer = styled.div`
-  min-width: 30%;
-  height: 200px;
+  min-width: 50%;
+  height: 240px;
   flex: 1 1 auto;
   display: flex;
   align-items: center;
@@ -71,18 +58,18 @@ export const DirectoryItemContainer = styled.div`
   }
 
   &:hover {
-    cursor: pointer;
-    ${Body} {
-      opacity: 0.9;
-    }
+    cursor:pointer
   }
 
-  @media screen and (max-width: 768px) {
-    height: 150px;
-    &:hover {
-      ${Body} {
-        opacity: 1;
-      }
-    }
+  $(body) {
+    opacity: 0.9
   }
+}
+
+
+  
+  @media screen and (max-width: 800px) {
+    height: 200px;
+  }
+
 `;

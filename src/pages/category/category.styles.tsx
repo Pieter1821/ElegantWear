@@ -17,7 +17,7 @@ export const CategoryContainer = styled.div`
   }
 
   @media screen and (min-width: 1200px) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 4fr);
     column-gap: 40px;
     row-gap: 40px;
   }
@@ -35,4 +35,6 @@ export const Title = styled.h2`
   @media screen and (max-width: 400px) {
     font-size: 28px;
   }
+
+
 `;

@@ -10,24 +10,22 @@ export const NavigationContainer = styled.div`
   padding: 10px;
   box-sizing: border-box;
 
-  @media screen and (min-width: 700px) {
-    height: 10vh;
-    flex-direction: row;
-    justify-content: space-between; 
-    margin-bottom: 2rem;
-    padding: 0;
+  @media screen and (max-width: 800px) {
+    height: 60px;
+    padding: 10px 20px;
+    margin-bottom:20px
   }
 `;
 
 export const LogoContainer = styled(Link)`
   height: 70px;
-  width: 70px; // Fixed size for mobile
+  width: 70px; 
   padding: 1rem;
 
-  @media screen and (min-width: 300px) {
-    width: 15%; 
+  @media screen and (max-width: 800px) {
+    width: 50px; 
     padding: 0;
-    flex-shrink: 0; 
+  
   }
 `;
 
@@ -37,18 +35,10 @@ export const NavLinks = styled.div`
   gap: 1rem;
   align-items: center; 
 
-  @media screen and (min-width: 358px) {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
+@media screen and (max-width: 800px){
+width:80%;
+}
 
-  @media screen and (min-width: 700px) {
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    flex-grow: 1;
-  }
 `;
 
 export const NavLink = styled(Link)`
@@ -60,20 +50,18 @@ export const NavLink = styled(Link)`
   justify-content: center;
   align-items: center;
 
-  @media screen and (min-width: 358px) {
+  @media screen and  (min-width: 300px) {
     padding: 0.5rem 1rem;
   }
 `;
 
 export const Icon = styled.div`
   @media screen and (max-width: 
-700px) {
+800px) {
 display: flex;
 justify-content: center;
 align-items: center;
 }
 
-@media screen and (min-width: 700px) {
-display: none; 
-}
+
 `;
