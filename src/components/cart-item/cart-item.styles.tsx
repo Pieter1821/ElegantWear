@@ -3,23 +3,22 @@ import styled from 'styled-components';
 export const CartItemContainer = styled.div`
   width: 100%;
   display: flex;
-  height: 80px;
-  margin-bottom: 15px;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 0;
+  margin-bottom: 12px;
 
-  img {
-    width: 30%;
-  }
+  img { width: 64px; height: 64px; object-fit: cover; border-radius: 6px; }
 `;
 
 export const ItemDetails = styled.div`
-  width: 70%;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding: 10px 20px;
+  padding-right: 6px;
+  gap: 6px;
 
-  span {
-    font-size: 16px;
-  }
+  span { font-size: 15px; }
 `;

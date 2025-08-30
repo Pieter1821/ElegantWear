@@ -1,11 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { useState, FormEvent, ChangeEvent } from 'react';
-import FormInput from '../form-input/form-input';
-import Button, { BUTTON_TYPE_CLASSES } from '../button/button';
+import { InputText } from 'primereact/inputtext';
+import { Password } from 'primereact/password';
+import { Button } from 'primereact/button';
 
 import { signInWithGooglePopup } from '../../utils/firebase/firebase';
 import { SignInContainer, ButtonsContainer } from './sign-in-form.styles';
 import { googleSignInStart, emailSignInStart } from '../../store/user/user.action';
+import React from 'react';
 
 const defaultFormFields = {
   email: '',
@@ -60,22 +62,19 @@ const SignInForm = () => {
 
       <form onSubmit={handleSubmit}>
 
-        <FormInput label="Email" type="email" required onChange={handleInputChange} name="email" value={email} />
+        <div className="p-field">
+          <label htmlFor="email">Email</label>
+          <InputText id="email" type="email" required onChange={handleInputChange} name="email" value={email} />
+        </div>
 
-        <FormInput
-          label="Password"
-          type="password"
-          required
-          onChange={handleInputChange}
-          name="password"
-          value={password}
-        />
+        <div className="p-field">
+          <label htmlFor="password">Password</label>
+          <Password id="password" feedback={false} required onChange={handleInputChange} name="password" value={password} />
+        </div>
 
         <ButtonsContainer>
-          <Button type="submit">Sign in</Button>
-          <Button buttonType={BUTTON_TYPE_CLASSES.google} onClick={signInWithGooglePopup}>
-            Google sign in
-          </Button>
+          <Button type="submit" label="Sign in" />
+          <Button label="Google sign in" className="p-button-secondary" onClick={signInWithGooglePopup} />
         </ButtonsContainer>
       </form>
     </SignInContainer>

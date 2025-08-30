@@ -5,27 +5,38 @@ export const NavigationContainer = styled.div`
   height: 70px; 
   width: 100%;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: 8px 16px;
   box-sizing: border-box;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
 
   @media screen and (max-width: 800px) {
-    height: 60px;
-    padding: 10px 20px;
-    margin-bottom:20px
+    height: auto;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  flex-direction: column;
+  gap: 6px;
+  }
+
+  /* make Menubar compact and touch friendly */
+  .p-menubar {
+    width: 100%;
+  }
+  .p-menubar .p-menubar-start, .p-menubar .p-menubar-end {
+    align-items: center;
   }
 `;
 
 export const LogoContainer = styled(Link)`
   height: 70px;
   width: 70px; 
-  padding: 1rem;
+  padding: 0.5rem;
 
   @media screen and (max-width: 800px) {
-    width: 50px; 
-    padding: 0;
-  
+  width: 48px; 
+  height: 48px;
   }
 `;
 
@@ -35,7 +46,11 @@ export const NavLinks = styled.div`
   align-items: center; 
 
 @media screen and (max-width: 800px){
-width:80%;
+  width:100%;
+  justify-content: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  font-size: 14px;
 }
 
 `;
@@ -57,8 +72,8 @@ export const NavLink = styled(Link)`
 export const Icon = styled.div`
   @media screen and (max-width: 
 800px) {
-display: flex;
-justify-content: center;
-align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 `;

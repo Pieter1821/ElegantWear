@@ -9,6 +9,11 @@ import App from './App.js';
 import { store, persistor } from './store/store';
 import { stripePromise } from './utils/stripe';
 
+// PrimeReact core styles, theme and icons
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
+
 
 
 

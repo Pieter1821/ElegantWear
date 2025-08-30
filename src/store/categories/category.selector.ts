@@ -16,7 +16,14 @@ export const selectCategoriesMap = createSelector(
   (categories): CategoryMap =>
     categories.reduce((acc, category) => {
       const { title, items } = category;
-      acc[title.toLowerCase()] = items;
+      // Normalize items: ensure id, name, imageUrl and numeric price exist
+      acc[title.toLowerCase()] = (items || []).map((it: any) => ({
+        id: it.id ?? it.ID ?? Math.random().toString(36).slice(2, 9),
+        name: it.name ?? it.title ?? 'Product',
+        imageUrl: it.imageUrl ?? it.image ?? '',
+        price: typeof it.price === 'number' ? it.price : Number(it.price) || 0,
+        ...it,
+      }));
       return acc;
     }, {} as CategoryMap)
 );

@@ -4,68 +4,60 @@ export const ProductCartContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: 350px;
+  height: 360px;
   align-items: center;
   position: relative;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
 
   img {
     width: 100%;
-    height: 95%;
+    height: 75%;
     object-fit: cover;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
+    transition: opacity 180ms ease-in-out;
+  }
+    /* price badge in corner */
+    .price-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: linear-gradient(180deg,#ff9f43,#ff6b00);
+      color: white;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-weight: 700;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+      z-index: 10;
+    }
+  /* Ensure any button (including PrimeReact .p-button) stays inside the card and doesn't overlap the image */
+  button,
+  .p-button {
+    width: 85%;
+    opacity: 0.98;
+    position: relative; /* keep inside normal flow */
+    margin: 12px auto 18px;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
   }
 
-  button {
-    width: 80%;
-    opacity: 0.7;
-    position: absolute;
-    top: 255px;
-    display: none;
+  /* prevent the button label from wrapping to multiple lines */
+  .p-button .p-button-label,
+  button > span {
+    white-space: nowrap;
   }
 
   &:hover {
-    img {
-      opacity: 0.8;
-    }
-
-    button {
-      opacity: 0.9;
-      display: flex;
-    }
+    img { opacity: 0.95; }
   }
-  
-@media screen and (max-width: 800px) {
-  width: 40vw;
-}
 
-@media screen and (max-width:400px){
-  width: 80vw;
-
-  button{
-    display:block;
-    opacity: 0.9;
-    min-width: unset;
-    padding: 10px 0px;
-
-    &:hover{
-      img{
-        opacity: unset
-      }
-
-      button {
-        opacity: unset;
-      }
-    }
-}
-
- `;
-
-export const Footer = styled.div`
-  width: 100%;
-  height: 5%;
-  display: flex;
-  justify-content: space-between;
-  font-size: 18px;
+  @media screen and (max-width: 900px) {
+  height: auto;
+  padding-bottom: 12px;
+  }
 `;
 
 export const Name = styled.span`

@@ -3,24 +3,38 @@ import styled from 'styled-components';
 export const SignInContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 380px;
+  width: 100%;
+  max-width: 460px;
 
   h2 {
-    margin: 10px 0;
+    margin: 10px 0 6px;
+  }
+
+  .p-field {
+    margin-bottom: 1rem;
   }
 
   @media screen and (max-width: 600px) {
-    width: 90%;
-    margin: 0 auto;
+    max-width: 100%;
+    width: 100%;
   }
 `;
 
 export const ButtonsContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  gap: 0.75rem;
+  justify-content: flex-start;
+
+  .p-button {
+    white-space: nowrap;
+  }
 
   @media screen and (max-width: 600px) {
     flex-direction: column;
-    align-items: center;
+    width: 100%;
+
+    .p-button {
+      width: 100%;
+    }
   }
 `;

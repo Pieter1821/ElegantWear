@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectCartItems } from '../../store/cart/cart.selector';
 import { addItemToCart, clearItemFromCart, removeItemFromCart } from '../../store/cart/cart.action';
 import { CartItem } from '../../store/cart/cart.types';
+import { formatZAR } from '../../utils/currency';
 
 import {
   CheckoutItemContainer,
@@ -13,6 +14,7 @@ import {
   Value,
   RemoveButton,
 } from './checkout-item.styles';
+import React from 'react';
 
 type CheckoutItemProps = {
   cartItem: CartItem,
@@ -43,7 +45,8 @@ const CheckoutItem: FC<CheckoutItemProps> = memo(({ cartItem }) => {
           &#10095;
         </Arrow>
       </Quantity>
-      <BaseSpan>{price}</BaseSpan>
+      <BaseSpan>{formatZAR(price)}</BaseSpan>
+      <BaseSpan>{formatZAR(price * quantity)}</BaseSpan>
       <RemoveButton onClick={clearItemHandler} aria-label={`Remove ${name} from cart`}>
         &#10005;
       </RemoveButton>

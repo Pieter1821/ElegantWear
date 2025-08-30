@@ -1,5 +1,6 @@
-import { useNavigate } from 'react-router-dom';
+import * as React from 'react';
 import { useCallback, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CartDropdownContainer, EmptyMessage, CartItems } from './cart-dropdown.styles';
 import CartItem from '../cart-item/cart-item';
 import Button from '../button/button';

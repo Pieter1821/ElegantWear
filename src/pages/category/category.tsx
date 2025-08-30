@@ -6,24 +6,27 @@ import { useSelector } from 'react-redux';
 import { selectCategoriesIsLoading, selectCategoriesMap } from '../../store/categories/category.selector';
 
 import { CategoryContainer, Title } from './category.styles';
+import React from 'react';
 
 type CategoryRouteParams = {
   category: string;
 }
 
 const Category = () => {
-  const { category } = useParams<keyof CategoryRouteParams>() as CategoryRouteParams;
+  const params = useParams<keyof CategoryRouteParams>() as CategoryRouteParams;
+  const rawCategory = params.category ?? '';
+  const decoded = decodeURIComponent(rawCategory).toLowerCase();
   const categoriesMap = useSelector(selectCategoriesMap);
   const isLoading = useSelector(selectCategoriesIsLoading);
-  const [products, setProducts] = useState(categoriesMap[category]);
+  const [products, setProducts] = useState(() => categoriesMap[decoded] ?? []);
 
   useEffect(() => {
-    setProducts(categoriesMap[category]);
-  }, [category, categoriesMap]);
+    setProducts(categoriesMap[decoded] ?? []);
+  }, [decoded, categoriesMap]);
 
   return (
     <Fragment>
-      <Title>{category.toUpperCase()}</Title>
+  <Title>{decoded ? decoded.toUpperCase() : 'CATEGORY'}</Title>
       {isLoading ? (
         <Spinner />
       ) : (

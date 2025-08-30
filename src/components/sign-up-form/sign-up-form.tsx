@@ -1,7 +1,8 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { useDispatch } from 'react-redux';
-import FormInput from '../form-input/form-input';
-import Button from '../button/button';
+import { InputText } from 'primereact/inputtext';
+import { Password } from 'primereact/password';
+import { Button } from 'primereact/button';
 import { SignUpStart } from '../../store/user/user.action';
 import { SignUpContainer } from './sign-up-form.styles';
 import { AuthError, AuthErrorCodes } from 'firebase/auth'
@@ -55,36 +56,27 @@ const SignUpForm = () => {
       <span>Sign up with email and password</span>
 
       <form onSubmit={handleSubmit}>
-        <FormInput
-          label="Display Name"
-          type="text"
-          required
-          onChange={handleInputChange}
-          name="displayName"
-          value={displayName}
-        />
+        <div className="p-field">
+          <label htmlFor="displayName">Display Name</label>
+          <InputText id="displayName" name="displayName" value={displayName} required onChange={handleInputChange} />
+        </div>
 
-        <FormInput label="Email" type="email" required onChange={handleInputChange} name="email" value={email} />
+        <div className="p-field">
+          <label htmlFor="email">Email</label>
+          <InputText id="email" name="email" value={email} required onChange={handleInputChange} />
+        </div>
 
-        <FormInput
-          label="Password"
-          type="password"
-          required
-          onChange={handleInputChange}
-          name="password"
-          value={password}
-        />
+        <div className="p-field">
+          <label htmlFor="password">Password</label>
+          <Password id="password" name="password" value={password} required onChange={handleInputChange} feedback={false} />
+        </div>
 
-        <FormInput
-          label="Confirm Password"
-          type="password"
-          required
-          onChange={handleInputChange}
-          name="confirmPassword"
-          value={confirmPassword}
-        />
+        <div className="p-field">
+          <label htmlFor="confirmPassword">Confirm Password</label>
+          <Password id="confirmPassword" name="confirmPassword" value={confirmPassword} required onChange={handleInputChange} feedback={false} />
+        </div>
 
-        <Button type="submit">Sign up</Button>
+        <Button type="submit" label="Sign up" />
       </form>
     </SignUpContainer>
   );

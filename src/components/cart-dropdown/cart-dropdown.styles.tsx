@@ -3,16 +3,17 @@ import { BaseButton, GoogleSignInButton, InvertedButton } from '../button/button
 
 export const CartDropdownContainer = styled.div`
   position: fixed;
-  height: 200px;
+  right: 24px;
+  top: 72px;
+  width: 320px;
+  max-width: calc(100% - 48px);
   display: flex;
   flex-direction: column;
-  padding: 15px;
-  border: 1px solid black;
+  padding: 16px;
+  border-radius: 10px;
   background-color: white;
-  top: 60px;
-  right: 0;
-  z-index: 30;
-  opacity: 0.8;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  z-index: 60;
 
   ${BaseButton},
   ${GoogleSignInButton},
@@ -21,14 +22,14 @@ export const CartDropdownContainer = styled.div`
   }
 
   @media (max-width: 500px) {
-    width: 90%;
-    top: 120px;
-    right: 0;
+  width: calc(100% - 48px);
+  right: 24px;
+  top: 110px;
   }
 
   @media screen and (min-width: 600px) {
-    top: 50px;
-    right: 50px;
+  top: 60px;
+  right: 24px;
   }
 
   @media screen and (min-width: 504px) {
@@ -36,9 +37,7 @@ export const CartDropdownContainer = styled.div`
   }
 
   @media screen and (min-width: 250px) {
-    top: 120px;
-    width: 190px;
-    right: 50px;
+  max-width: 360px;
   }
 `;
 

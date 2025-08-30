@@ -14,11 +14,14 @@ export const PaymentFormContainer = styled.div`
 `;
 
 export const FormContainer = styled.form`
-  height: 100px;
-  min-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
 
-  @media screen and (max-width: 600px) {
-    min-width: 90%;
+  .__StripeElement {
+    width: 100% !important;
   }
 `;
 
@@ -27,7 +30,9 @@ export const PaymentButton = styled(Button)`
   margin-top: 30px;
 
   @media screen and (max-width: 600px) {
-    margin-top: 20px;
-    margin-right: auto;
+  margin-top: 12px;
+  margin-right: 0;
+  width: 140px;
+  align-self: flex-start;
   }
 `;
